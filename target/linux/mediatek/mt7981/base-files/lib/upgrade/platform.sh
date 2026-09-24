@@ -189,7 +189,9 @@ platform_do_upgrade() {
 
 	case "$board" in
 	xiaomi,mi-router-wr30u-112m|\
+	xiaomi,mi-router-wr30u-238m|\
 	xiaomi,mi-router-ax3000t|\
+	xiaomi,mi-router-ax3000t-dsa|\
 	xiaomi,mi-router-ax3000t-an8855|\
 	*mt3000* |\
 	glinet,x3000-emmc |\
@@ -253,6 +255,7 @@ platform_check_image() {
 	ruijie,rg-x30e* |\
 	xiaomi,mi-router-wr30u-stock|\
 	xiaomi,mi-router-wr30u-112m|\
+	xiaomi,mi-router-wr30u-238m|\
 	xiaomi,mi-router-ax3000t* |\
 	*abt,asr3000* |\
 	*cetron,ct3003* |\
