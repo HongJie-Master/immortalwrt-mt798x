@@ -404,6 +404,22 @@ define Device/xiaomi_mi-router-wr30u-112m
 endef
 TARGET_DEVICES += xiaomi_mi-router-wr30u-112m
 
+define Device/xiaomi_mi-router-wr30u-238m
+  DEVICE_VENDOR := Xiaomi
+  DEVICE_MODEL := Mi Router WR30U (238M UBI layout)
+  DEVICE_DTS := mt7981-xiaomi-mi-router-wr30u-238m
+  DEVICE_DTS_DIR := $(DTS_DIR)/mediatek
+  UBINIZE_OPTS := -E 5
+  BLOCKSIZE := 128k
+  PAGESIZE := 2048
+  IMAGE_SIZE := 243712k
+  KERNEL_IN_UBI := 1
+  IMAGES += factory.bin
+  IMAGE/factory.bin := append-ubi | check-size $$$$(IMAGE_SIZE)
+  IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
+endef
+TARGET_DEVICES += xiaomi_mi-router-wr30u-238m
+
 define Device/xiaomi_mi-router-ax3000t-stock
   DEVICE_VENDOR := Xiaomi
   DEVICE_MODEL := Mi Router AX3000T (stock layout)
@@ -432,6 +448,22 @@ define Device/xiaomi_mi-router-ax3000t
   IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
 endef
 TARGET_DEVICES += xiaomi_mi-router-ax3000t
+
+define Device/xiaomi_mi-router-ax3000t-dsa
+  DEVICE_VENDOR := Xiaomi
+  DEVICE_MODEL := Mi Router AX3000T (DSA)
+  DEVICE_DTS := mt7981-xiaomi-mi-router-ax3000t-dsa
+  DEVICE_DTS_DIR := $(DTS_DIR)/mediatek
+  UBINIZE_OPTS := -E 5
+  BLOCKSIZE := 128k
+  PAGESIZE := 2048
+  IMAGE_SIZE := 114688k
+  KERNEL_IN_UBI := 1
+  IMAGES += factory.bin
+  IMAGE/factory.bin := append-ubi | check-size $$$$(IMAGE_SIZE)
+  IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
+endef
+TARGET_DEVICES += xiaomi_mi-router-ax3000t-dsa
 
 define Device/xiaomi_mi-router-ax3000t-an8855-stock
   DEVICE_VENDOR := Xiaomi
