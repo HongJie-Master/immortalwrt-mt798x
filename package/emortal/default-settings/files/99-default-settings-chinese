@@ -18,6 +18,9 @@ if ! uci -q get system.@imm_init[0].system_chn > "/dev/null"; then
 	EOF
 fi
 
-sed -i.bak "s,downloads.immortalwrt.org,mirrors.vsean.net/openwrt,g" "/etc/opkg/distfeeds.conf"
+# sed -i.bak "s,downloads.immortalwrt.org,mirrors.vsean.net/openwrt,g" "/etc/opkg/distfeeds.conf"
+# sed -i '/check_signature/d' /etc/opkg.conf
+sed -i '/openwrt_core/d' /etc/opkg/distfeeds.conf
+sed -i '/openwrt_kmods/d' /etc/opkg/distfeeds.conf
 
 exit 0
