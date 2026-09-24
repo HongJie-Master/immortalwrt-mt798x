@@ -1,0 +1,1 @@
+rm -rf tmp/ && rm -rf build_dir/ && rm -rf staging_dir/
