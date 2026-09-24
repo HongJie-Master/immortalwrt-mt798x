@@ -682,4 +682,4 @@
 		clock-names = "ice_dbg";
 	};
 };
-#include "mt7981-clkitg-dsa.dtsi"
+#include "mt7981-clkitg.dtsi"
