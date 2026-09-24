@@ -1,0 +1,33 @@
+#!/bin/sh
+
+uci -q get system.@imm_init[0] > "/dev/null" || uci -q add system imm_init > "/dev/null"
+uci -q get system.@imm_init[0].ipv6 > "/dev/null" && exit 0
+
+uci -q set dhcp.lan.ra="server"
+uci -q set dhcp.lan.dhcpv6="disabled"
+uci -q set dhcp.lan.ra_management="0"
+uci -q set dhcp.lan.ra_default="1"
+uci -q set dhcp.lan.dns_service="0"
+uci -q set dhcp.lan.force="1"
+uci -q set dhcp.lan.ra_flags="none"
+uci -q commit dhcp
+# wan
+uci -q set network.wan.metric="10"
+# wan6
+uci -q set network.wan6.device="@wan"
+uci -q set network.wan6.proto="dhcpv6"
+uci -q set network.wan6.reqaddress="try"
+uci -q set network.wan6.reqprefix="auto"
+uci -q set network.wan6.metric="10"
+# lan
+uci -q set network.lan.ip6ifaceid="eui64"
+uci -q set network.lan.ip6hint="0000"
+uci -q add_list network.lan.ip6class="wan"
+uci -q add_list network.lan.ip6class="wan6"
+uci -q add_list network.lan.ip6class="wan_6"
+uci -q commit network
+
+uci -q set system.@imm_init[0].ipv6="1"
+uci -q commit system
+
+exit 0
