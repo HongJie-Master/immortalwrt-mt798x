@@ -1,0 +1,11 @@
+--- a/libfstools/rootdisk.c
++++ b/libfstools/rootdisk.c
+@@ -324,7 +324,7 @@
+ 		if (rootdisk_use_f2fs(p))
+ 			snprintf(str, sizeof(str), "mkfs.f2fs -q -l rootfs_data %s", v->blk);
+ 		else
+-			snprintf(str, sizeof(str), "mkfs.ext4 -q -L rootfs_data %s", v->blk);
++			snprintf(str, sizeof(str), "mkfs.f2fs -q -L rootfs_data %s", v->blk);
+ 		ret = system(str);
+ 		break;
+ 	default:
