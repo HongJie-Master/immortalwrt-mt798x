@@ -9,8 +9,21 @@ include $(TOPDIR)/rules.mk
 include $(INCLUDE_DIR)/kernel.mk
 
 PKG_NAME:=conninfra
-PKG_VERSION:=f2fa25
-PKG_SOURCE:=mt79xx_conninfra_20231229-f2fa25.tar.xz
+
+ifeq ($(CONFIG_MTK_MT_WIFI_DRIVER_VERSION_7661),y)
+	PKG_VERSION:=20220907-bbf588
+	PKG_SOURCE:=mt79xx_conninfra_20220907-bbf588.tar.xz
+else ifeq ($(CONFIG_MTK_MT_WIFI_DRIVER_VERSION_7671),y)
+	PKG_VERSION:=20230628-1b4d02
+	PKG_SOURCE:=mt79xx_conninfra_20230628-1b4d02.tar.xz
+else ifeq ($(CONFIG_MTK_MT_WIFI_DRIVER_VERSION_7672),y)
+	PKG_VERSION:=20231229-f2fa25
+	PKG_SOURCE:=mt79xx_conninfra_20231229-f2fa25.tar.xz
+else
+	PKG_VERSION:=20250408-f2fa25
+	PKG_SOURCE:=mt79xx_conninfra_20250408-f2fa25.tar.xz
+endif
+
 PKG_BUILD_DIR:=$(KERNEL_BUILD_DIR)/$(PKG_NAME)
 PKG_MAINTAINER:=Kun-Ze Syue<kun-ze.syue@mediatek.com>
 
