@@ -103,6 +103,7 @@ mediatek_setup_interfaces()
 			"0:lan:1" "2:lan:2" "3:lan:3" "4:wan" "6u@eth0" "5u@eth1"
 		;;
 	ikuai,q3000 |\
+	xiaomi,mi-router-ax3000t-dsa |\
 	ruijie,rg-x30e*)
 		ucidef_set_interfaces_lan_wan "lan1 lan2 lan3" wan
 		;;
