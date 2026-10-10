@@ -22,6 +22,7 @@ uci -q set network.wan6.metric="10"
 # lan
 uci -q set network.lan.ip6ifaceid="eui64"
 uci -q set network.lan.ip6hint="0000"
+uci -q delete network.lan.ip6class
 uci -q add_list network.lan.ip6class="wan"
 uci -q add_list network.lan.ip6class="wan6"
 uci -q add_list network.lan.ip6class="wan_6"
